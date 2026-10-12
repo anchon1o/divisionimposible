@@ -1,0 +1,15 @@
+DIVISIÓN IMPOSIBLE · divisionimposible.vercel.app
+
+index.html            O xogo enteiro (imaxes dentro do propio arquivo).
+ranking.html          Ranking para incrustar en cagando:
+                      https://divisionimposible.vercel.app/ranking.html?n=10
+                      Parámetros: lang=gl|es|ca|eu · n=filas · p=d|w|a (hoxe, semana, sempre) · v=veg
+supabase.sql          Táboa dimp_ranking (proxecto xogos). Executar no SQL Editor de Supabase.
+manifest.webmanifest  Para instalar o xogo no móbil.
+favicon.ico
+icons/
+  divisionimposible.png   Icona 512×512 para o post-it de cagando (cor de post-it: #B3261E)
+  icon-512.png / icon-192.png / apple-touch-icon.png / favicon.png
+
+Subir a GitHub: repositorio divisionimposible → Add file → Upload files → arrastrar TODO
+o contido desta carpeta (non a carpeta) → Commit changes. Vercel publícao só.
