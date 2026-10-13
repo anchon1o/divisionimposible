@@ -222,6 +222,8 @@ img.ladle{position:absolute;top:-14px;right:-6px;width:44px;opacity:0;pointer-ev
 .rhead span:first-child{width:22px}.rhead span:nth-child(2){flex:1}
 .rankf .dy{width:42px;text-align:right;color:var(--muted);font-size:12px}
 .rankf .pt{width:46px;text-align:right}
+@media (prefers-reduced-motion:no-preference){.shake{animation:shk .35s}@keyframes shk{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}}
+.face.flip{transform:scaleX(-1)}
 </style>
 </head>
 <body>
@@ -229,39 +231,39 @@ img.ladle{position:absolute;top:-14px;right:-6px;width:44px;opacity:0;pointer-ev
 <script>
 /* ===================== TEXTOS ===================== */
 const T={
-gl:{nameW:'Nome',rankFull:'Ver ranking completo',rankWord:'Ranking',rt_d:'Hoxe',rt_w:'Semana',rt_a:'Sempre',daysW:'Días',avgW:'Media',vegan:'Vegano',streak:'Racha: {n} días',weekAvg:'Media semanal: {s}%',onlineTitle:'Xogar con amigos',soon:'Pronto',on1:'Reta a un amigo cunha ligazón: o mesmo menú, a ver quen reparte mellor.',on2:'Salas con código e contrarreloj: precisión e rapidez.',freeDesc:'Pratos ao chou, sen límite. Para adestrar o ollo.',play:'Xogar',rankTitle:'Clasificación de hoxe',yourName:'O teu nome',join:'Anotarme',joined:'Anotado no ranking!',already:'Xa te anotaches hoxe.',rankEmpty:'Aínda non hai ninguén. Sé o primeiro!',rankOff:'O ranking non está dispoñible agora.',rankLoad:'Cargando…',playToJoin:'Xoga o reto e anótate ao rematar.',menuShort:'Menú',thShare:'Ración',thDev:'Desvío',menuTitle:'Menú do día',name:'Galego',title:'División Imposible',subtitle:'Reparte a comida a partes iguais',daily:'Reto do día',free:'Modo libre',todayN:'{n} persoas á mesa',forN:'Para {n} persoas',start:'Comezar',resume:'Continuar',played:'Xa xogaches o reto de hoxe.',seeResult:'Ver resultado',dishOf:'Prato {i} de {n}',
+gl:{crumbs:'Migas: {s}% (resta da nota)',cutHint:'Corta arrastrando o dedo, coma cun coitelo de verdade.',tooMany:'Ese corte deixaría máis anacos que comensais.',nameW:'Nome',rankFull:'Ver ranking completo',rankWord:'Ranking',rt_d:'Hoxe',rt_w:'Semana',rt_a:'Sempre',daysW:'Días',avgW:'Media',vegan:'Vegano',streak:'Racha: {n} días',weekAvg:'Media semanal: {s}%',onlineTitle:'Xogar con amigos',soon:'Pronto',on1:'Reta a un amigo cunha ligazón: o mesmo menú, a ver quen reparte mellor.',on2:'Salas con código e contrarreloj: precisión e rapidez.',freeDesc:'Pratos ao chou, sen límite. Para adestrar o ollo.',play:'Xogar',rankTitle:'Clasificación de hoxe',yourName:'O teu nome',join:'Anotarme',joined:'Anotado no ranking!',already:'Xa te anotaches hoxe.',rankEmpty:'Aínda non hai ninguén. Sé o primeiro!',rankOff:'O ranking non está dispoñible agora.',rankLoad:'Cargando…',playToJoin:'Xoga o reto e anótate ao rematar.',menuShort:'Menú',thShare:'Ración',thDev:'Desvío',menuTitle:'Menú do día',name:'Galego',title:'División Imposible',subtitle:'Reparte a comida a partes iguais',daily:'Reto do día',free:'Modo libre',todayN:'{n} persoas á mesa',forN:'Para {n} persoas',start:'Comezar',resume:'Continuar',played:'Xa xogaches o reto de hoxe.',seeResult:'Ver resultado',dishOf:'Prato {i} de {n}',
 radial:'Arrastra e solta para cortar desde o centro.',diam:'Arrastra de lado a lado para cortar pola metade.',linear:'Arrastra e solta onde queiras cortar.',grid:'Arrastra ao longo do corte: en vertical ou en horizontal.',pour:'Mantén premido cada recipiente para servir. Ollo, que a forma engana!',spoon:'Mantén premido cada prato para servir co cazo. Calcula ben, que non hai volta atrás!',share:'Toca unha peza e despois un prato, ou arrástraa. Ollo cos tamaños!',
 left:'Cortes que quedan: <b>{k}</b>',pieces:'Anacos: <b>{p}</b> de {n}',nope:'Con ese corte non sae a conta!',leftDish:'Quedan na fonte: <b>{k}</b>',fonte:'Fonte',serve:'Servir',
 fairness:'xustiza',smallest:'A ración máis pequena é o {s}% da máis grande',ideal:'Ración xusta: {p}%',next:'Seguinte prato',end:'Ver resultado',another:'Outro prato',avg:'Media: {s}%',
 r95:'Milimétrico! Ninguén protesta.',r85:'Moi ben, case nin se nota.',r70:'Alguén mira de reollo o prato do lado…',r50:'Aquí vai haber discusión.',r0:'Escándalo na mesa!',
-total:'Puntuación do día',share2:'Compartir',copied:'Copiado!',copyThis:'Copia o texto:',nextDay:'Novo reto en',home:'Inicio',howTitle:'Como se xoga',scoreTitle:'Como se puntúa',bestSplit:'O teu reparto: {a}% · o mellor posible: {b}%',scoreHow:'A nota de cada prato é a xustiza: a ración máis pequena dividida entre a máis grande. Todas iguais = 100%; se a menor é a metade da maior = 50%.<br><br><b>Cortes:</b> mídese a superficie de cada anaco tal como se ve.<br><b>Bebidas e cazo:</b> mídese a cantidade servida. Ollo, que nunha copa cónica o nivel engana.<br><b>Tapas:</b> como as pezas son de tamaños distintos, compárase co mellor reparto posible: se o bordas, 100%.<br><br>A nota do día é a media de todos os pratos.',
+total:'Puntuación do día',share2:'Compartir',copied:'Copiado!',copyThis:'Copia o texto:',nextDay:'Novo reto en',home:'Inicio',howTitle:'Como se xoga',scoreTitle:'Como se puntúa',bestSplit:'O teu reparto: {a}% · o mellor posible: {b}%',scoreHow:'A nota de cada prato é a xustiza: a ración máis pequena dividida entre a máis grande. Todas iguais = 100%; se a menor é a metade da maior = 50%.<br><br><b>Cortes:</b> mídese a superficie de cada anaco tal como se ve. Os anaquiños máis pequenos ca un cuarto de ración son migas: non contan como ración e o que se perde resta da nota.<br><b>Bebidas e cazo:</b> mídese a cantidade servida. Ollo, que nunha copa cónica o nivel engana.<br><b>Tapas:</b> como as pezas son de tamaños distintos, compárase co mellor reparto posible: se o bordas, 100%.<br><br>A nota do día é a media de todos os pratos.',
 how:'Cada día hai unha comida nova cun menú completo: entrante, primeiro, segundo, sobremesa e bebida. Corta, serve co cazo, enche os vasos ou reparte as tapas en tantas racións como persoas haxa. Non hai volta atrás! Canto máis iguais as racións, máis puntos.',
 course:{e:'Entrante',a:'Acompañamento',p:'Primeiro',s:'Segundo',d:'Sobremesa',b:'Bebida'},
 occ:{romantica:'Cea romántica',venres:'Ceíña de venres',avoa:'Xantar na casa da avoa',amigos:'Cea cos amigos',familia:'Xantar familiar',cumpre:'Aniversario',empresa:'Cea de empresa',festa:'Festa da aldea'}},
-es:{nameW:'Nombre',rankFull:'Ver ranking completo',rankWord:'Ranking',rt_d:'Hoy',rt_w:'Semana',rt_a:'Siempre',daysW:'Días',avgW:'Media',vegan:'Vegano',streak:'Racha: {n} días',weekAvg:'Media semanal: {s}%',onlineTitle:'Jugar con amigos',soon:'Pronto',on1:'Reta a un amigo con un enlace: el mismo menú, a ver quién reparte mejor.',on2:'Salas con código y contrarreloj: precisión y rapidez.',freeDesc:'Platos al azar, sin límite. Para entrenar el ojo.',play:'Jugar',rankTitle:'Clasificación de hoy',yourName:'Tu nombre',join:'Apuntarme',joined:'¡Apuntado en el ranking!',already:'Ya te apuntaste hoy.',rankEmpty:'Aún no hay nadie. ¡Sé el primero!',rankOff:'El ranking no está disponible ahora.',rankLoad:'Cargando…',playToJoin:'Juega el reto y apúntate al terminar.',menuShort:'Menú',thShare:'Ración',thDev:'Desvío',menuTitle:'Menú del día',name:'Castellano',title:'División Imposible',subtitle:'Reparte la comida a partes iguales',daily:'Reto del día',free:'Modo libre',todayN:'{n} personas a la mesa',forN:'Para {n} personas',start:'Empezar',resume:'Continuar',played:'Ya has jugado el reto de hoy.',seeResult:'Ver resultado',dishOf:'Plato {i} de {n}',
+es:{crumbs:'Migas: {s}% (resta de la nota)',cutHint:'Corta arrastrando el dedo, como con un cuchillo de verdad.',tooMany:'Ese corte dejaría más trozos que comensales.',nameW:'Nombre',rankFull:'Ver ranking completo',rankWord:'Ranking',rt_d:'Hoy',rt_w:'Semana',rt_a:'Siempre',daysW:'Días',avgW:'Media',vegan:'Vegano',streak:'Racha: {n} días',weekAvg:'Media semanal: {s}%',onlineTitle:'Jugar con amigos',soon:'Pronto',on1:'Reta a un amigo con un enlace: el mismo menú, a ver quién reparte mejor.',on2:'Salas con código y contrarreloj: precisión y rapidez.',freeDesc:'Platos al azar, sin límite. Para entrenar el ojo.',play:'Jugar',rankTitle:'Clasificación de hoy',yourName:'Tu nombre',join:'Apuntarme',joined:'¡Apuntado en el ranking!',already:'Ya te apuntaste hoy.',rankEmpty:'Aún no hay nadie. ¡Sé el primero!',rankOff:'El ranking no está disponible ahora.',rankLoad:'Cargando…',playToJoin:'Juega el reto y apúntate al terminar.',menuShort:'Menú',thShare:'Ración',thDev:'Desvío',menuTitle:'Menú del día',name:'Castellano',title:'División Imposible',subtitle:'Reparte la comida a partes iguales',daily:'Reto del día',free:'Modo libre',todayN:'{n} personas a la mesa',forN:'Para {n} personas',start:'Empezar',resume:'Continuar',played:'Ya has jugado el reto de hoy.',seeResult:'Ver resultado',dishOf:'Plato {i} de {n}',
 radial:'Arrastra y suelta para cortar desde el centro.',diam:'Arrastra de lado a lado para cortar por la mitad.',linear:'Arrastra y suelta donde quieras cortar.',grid:'Arrastra a lo largo del corte: en vertical o en horizontal.',pour:'Mantén pulsado cada recipiente para servir. ¡Ojo, que la forma engaña!',spoon:'Mantén pulsado cada plato para servir con el cazo. ¡Calcula bien, que no hay vuelta atrás!',share:'Toca una pieza y luego un plato, o arrástrala. ¡Ojo con los tamaños!',
 left:'Cortes que quedan: <b>{k}</b>',pieces:'Trozos: <b>{p}</b> de {n}',nope:'¡Con ese corte no salen las cuentas!',leftDish:'Quedan en la fuente: <b>{k}</b>',fonte:'Fuente',serve:'Servir',
 fairness:'justicia',smallest:'La ración más pequeña es el {s}% de la más grande',ideal:'Ración justa: {p}%',next:'Siguiente plato',end:'Ver resultado',another:'Otro plato',avg:'Media: {s}%',
 r95:'¡Milimétrico! Nadie protesta.',r85:'Muy bien, casi ni se nota.',r70:'Alguien mira de reojo el plato de al lado…',r50:'Aquí va a haber discusión.',r0:'¡Escándalo en la mesa!',
-total:'Puntuación del día',share2:'Compartir',copied:'¡Copiado!',copyThis:'Copia el texto:',nextDay:'Nuevo reto en',home:'Inicio',howTitle:'Cómo se juega',scoreTitle:'Cómo se puntúa',bestSplit:'Tu reparto: {a}% · el mejor posible: {b}%',scoreHow:'La nota de cada plato es la justicia: la ración más pequeña dividida entre la más grande. Todas iguales = 100%; si la menor es la mitad de la mayor = 50%.<br><br><b>Cortes:</b> se mide la superficie de cada trozo tal como se ve.<br><b>Bebidas y cazo:</b> se mide la cantidad servida. Ojo, que en una copa cónica el nivel engaña.<br><b>Tapas:</b> como las piezas tienen tamaños distintos, se compara con el mejor reparto posible: si lo bordas, 100%.<br><br>La nota del día es la media de todos los platos.',
+total:'Puntuación del día',share2:'Compartir',copied:'¡Copiado!',copyThis:'Copia el texto:',nextDay:'Nuevo reto en',home:'Inicio',howTitle:'Cómo se juega',scoreTitle:'Cómo se puntúa',bestSplit:'Tu reparto: {a}% · el mejor posible: {b}%',scoreHow:'La nota de cada plato es la justicia: la ración más pequeña dividida entre la más grande. Todas iguales = 100%; si la menor es la mitad de la mayor = 50%.<br><br><b>Cortes:</b> se mide la superficie de cada trozo tal como se ve. Los trocitos más pequeños que un cuarto de ración son migas: no cuentan como ración y lo que se pierde resta de la nota.<br><b>Bebidas y cazo:</b> se mide la cantidad servida. Ojo, que en una copa cónica el nivel engaña.<br><b>Tapas:</b> como las piezas tienen tamaños distintos, se compara con el mejor reparto posible: si lo bordas, 100%.<br><br>La nota del día es la media de todos los platos.',
 how:'Cada día hay una comida nueva con menú completo: entrante, primero, segundo, postre y bebida. Corta, sirve con el cazo, llena los vasos o reparte las tapas en tantas raciones como personas haya. ¡No hay vuelta atrás! Cuanto más iguales las raciones, más puntos.',
 course:{e:'Entrante',a:'Acompañamiento',p:'Primero',s:'Segundo',d:'Postre',b:'Bebida'},
 occ:{romantica:'Cena romántica',venres:'Cenita del viernes',avoa:'Comida en casa de la abuela',amigos:'Cena con amigos',familia:'Comida familiar',cumpre:'Fiesta de cumpleaños',empresa:'Cena de empresa',festa:'Fiesta del pueblo'}},
-ca:{nameW:'Nom',rankFull:'Veure el rànquing complet',rankWord:'Rànquing',rt_d:'Avui',rt_w:'Setmana',rt_a:'Sempre',daysW:'Dies',avgW:'Mitjana',vegan:'Vegà',streak:'Ratxa: {n} dies',weekAvg:'Mitjana setmanal: {s}%',onlineTitle:'Jugar amb amics',soon:'Aviat',on1:'Repta un amic amb un enllaç: el mateix menú, a veure qui reparteix millor.',on2:'Sales amb codi i contrarellotge: precisió i rapidesa.',freeDesc:'Plats a l\'atzar, sense límit. Per entrenar l\'ull.',play:'Jugar',rankTitle:'Classificació d\'avui',yourName:'El teu nom',join:'Apuntar-m\'hi',joined:'Apuntat al rànquing!',already:'Ja t\'hi has apuntat avui.',rankEmpty:'Encara no hi ha ningú. Sigues el primer!',rankOff:'El rànquing no està disponible ara.',rankLoad:'Carregant…',playToJoin:'Juga el repte i apunta-t\'hi en acabar.',menuShort:'Menú',thShare:'Ració',thDev:'Desviació',menuTitle:'Menú del dia',name:'Català',title:'Divisió Impossible',subtitle:'Reparteix el menjar a parts iguals',daily:'Repte del dia',free:'Mode lliure',todayN:'{n} persones a taula',forN:'Per a {n} persones',start:'Començar',resume:'Continuar',played:'Ja has jugat el repte d\'avui.',seeResult:'Veure resultat',dishOf:'Plat {i} de {n}',
+ca:{crumbs:'Engrunes: {s}% (resta de la nota)',cutHint:'Talla arrossegant el dit, com amb un ganivet de veritat.',tooMany:'Aquest tall deixaria més trossos que comensals.',nameW:'Nom',rankFull:'Veure el rànquing complet',rankWord:'Rànquing',rt_d:'Avui',rt_w:'Setmana',rt_a:'Sempre',daysW:'Dies',avgW:'Mitjana',vegan:'Vegà',streak:'Ratxa: {n} dies',weekAvg:'Mitjana setmanal: {s}%',onlineTitle:'Jugar amb amics',soon:'Aviat',on1:'Repta un amic amb un enllaç: el mateix menú, a veure qui reparteix millor.',on2:'Sales amb codi i contrarellotge: precisió i rapidesa.',freeDesc:'Plats a l\'atzar, sense límit. Per entrenar l\'ull.',play:'Jugar',rankTitle:'Classificació d\'avui',yourName:'El teu nom',join:'Apuntar-m\'hi',joined:'Apuntat al rànquing!',already:'Ja t\'hi has apuntat avui.',rankEmpty:'Encara no hi ha ningú. Sigues el primer!',rankOff:'El rànquing no està disponible ara.',rankLoad:'Carregant…',playToJoin:'Juga el repte i apunta-t\'hi en acabar.',menuShort:'Menú',thShare:'Ració',thDev:'Desviació',menuTitle:'Menú del dia',name:'Català',title:'Divisió Impossible',subtitle:'Reparteix el menjar a parts iguals',daily:'Repte del dia',free:'Mode lliure',todayN:'{n} persones a taula',forN:'Per a {n} persones',start:'Començar',resume:'Continuar',played:'Ja has jugat el repte d\'avui.',seeResult:'Veure resultat',dishOf:'Plat {i} de {n}',
 radial:'Arrossega i deixa anar per tallar des del centre.',diam:'Arrossega d\'un costat a l\'altre per tallar per la meitat.',linear:'Arrossega i deixa anar on vulguis tallar.',grid:'Arrossega al llarg del tall: en vertical o en horitzontal.',pour:'Mantén premut cada recipient per servir. Compte, que la forma enganya!',spoon:'Mantén premut cada plat per servir amb el cullerot. Calcula bé, que no hi ha marxa enrere!',share:'Toca una peça i després un plat, o arrossega-la. Compte amb les mides!',
 left:'Talls que queden: <b>{k}</b>',pieces:'Trossos: <b>{p}</b> de {n}',nope:'Amb aquest tall no surten els comptes!',leftDish:'Queden a la safata: <b>{k}</b>',fonte:'Safata',serve:'Servir',
 fairness:'justícia',smallest:'La ració més petita és el {s}% de la més gran',ideal:'Ració justa: {p}%',next:'Plat següent',end:'Veure resultat',another:'Un altre plat',avg:'Mitjana: {s}%',
 r95:'Mil·limètric! Ningú protesta.',r85:'Molt bé, gairebé no es nota.',r70:'Algú mira de reüll el plat del costat…',r50:'Aquí hi haurà discussió.',r0:'Escàndol a taula!',
-total:'Puntuació del dia',share2:'Compartir',copied:'Copiat!',copyThis:'Copia el text:',nextDay:'Nou repte en',home:'Inici',howTitle:'Com es juga',scoreTitle:'Com es puntua',bestSplit:'El teu repartiment: {a}% · el millor possible: {b}%',scoreHow:'La nota de cada plat és la justícia: la ració més petita dividida entre la més gran. Totes iguals = 100%; si la menor és la meitat de la major = 50%.<br><br><b>Talls:</b> es mesura la superfície de cada tros tal com es veu.<br><b>Begudes i cullerot:</b> es mesura la quantitat servida. Compte, que en una copa cònica el nivell enganya.<br><b>Tapes:</b> com que les peces tenen mides diferents, es compara amb el millor repartiment possible: si l\'encertes, 100%.<br><br>La nota del dia és la mitjana de tots els plats.',
+total:'Puntuació del dia',share2:'Compartir',copied:'Copiat!',copyThis:'Copia el text:',nextDay:'Nou repte en',home:'Inici',howTitle:'Com es juga',scoreTitle:'Com es puntua',bestSplit:'El teu repartiment: {a}% · el millor possible: {b}%',scoreHow:'La nota de cada plat és la justícia: la ració més petita dividida entre la més gran. Totes iguals = 100%; si la menor és la meitat de la major = 50%.<br><br><b>Talls:</b> es mesura la superfície de cada tros tal com es veu. Els trossets més petits que un quart de ració són engrunes: no compten com a ració i el que es perd resta de la nota.<br><b>Begudes i cullerot:</b> es mesura la quantitat servida. Compte, que en una copa cònica el nivell enganya.<br><b>Tapes:</b> com que les peces tenen mides diferents, es compara amb el millor repartiment possible: si l\'encertes, 100%.<br><br>La nota del dia és la mitjana de tots els plats.',
 how:'Cada dia hi ha un àpat nou amb menú complet: entrant, primer, segon, postres i beguda. Talla, serveix amb el cullerot, omple els gots o reparteix les tapes en tantes racions com persones hi hagi. No hi ha marxa enrere! Com més iguals les racions, més punts.',
 course:{e:'Entrant',a:'Acompanyament',p:'Primer plat',s:'Segon plat',d:'Postres',b:'Beguda'},
 occ:{romantica:'Sopar romàntic',venres:'Soparet de divendres',avoa:'Dinar a casa de l\'àvia',amigos:'Sopar amb amics',familia:'Dinar familiar',cumpre:'Festa d\'aniversari',empresa:'Sopar d\'empresa',festa:'Festa major'}},
-eu:{nameW:'Izena',rankFull:'Ikusi sailkapen osoa',rankWord:'Sailkapena',rt_d:'Gaur',rt_w:'Astea',rt_a:'Beti',daysW:'Egunak',avgW:'Batez best.',vegan:'Beganoa',streak:'Bolada: {n} egun',weekAvg:'Asteko batez bestekoa: %{s}',onlineTitle:'Lagunekin jokatu',soon:'Laster',on1:'Bota erronka lagun bati esteka batekin: menu bera, ea nork banatzen duen hobeto.',on2:'Kodedun gelak eta erlojupekoa: zehaztasuna eta abiadura.',freeDesc:'Ausazko platerak, mugarik gabe. Begia trebatzeko.',play:'Jokatu',rankTitle:'Gaurko sailkapena',yourName:'Zure izena',join:'Izena eman',joined:'Sailkapenean zaude!',already:'Gaur izena eman duzu jada.',rankEmpty:'Oraindik ez dago inor. Izan zaitez lehena!',rankOff:'Sailkapena ez dago erabilgarri orain.',rankLoad:'Kargatzen…',playToJoin:'Jokatu erronka eta eman izena amaitzean.',menuShort:'Menua',thShare:'Zatia',thDev:'Desbideratzea',menuTitle:'Eguneko menua',name:'Euskara',title:'Zatiketa Ezinezkoa',subtitle:'Banatu janaria zati berdinetan',daily:'Eguneko erronka',free:'Modu librea',todayN:'{n} lagun mahaian',forN:'{n} pertsonarentzat',start:'Hasi',resume:'Jarraitu',played:'Gaurko erronka jokatu duzu jada.',seeResult:'Ikusi emaitza',dishOf:'Platera {i}/{n}',
+eu:{crumbs:'Apurrak: %{s} (notari kentzen zaio)',cutHint:'Moztu hatza arrastatuz, benetako labana batekin bezala.',tooMany:'Ebaki horrek mahaikide baino zati gehiago utziko lituzke.',nameW:'Izena',rankFull:'Ikusi sailkapen osoa',rankWord:'Sailkapena',rt_d:'Gaur',rt_w:'Astea',rt_a:'Beti',daysW:'Egunak',avgW:'Batez best.',vegan:'Beganoa',streak:'Bolada: {n} egun',weekAvg:'Asteko batez bestekoa: %{s}',onlineTitle:'Lagunekin jokatu',soon:'Laster',on1:'Bota erronka lagun bati esteka batekin: menu bera, ea nork banatzen duen hobeto.',on2:'Kodedun gelak eta erlojupekoa: zehaztasuna eta abiadura.',freeDesc:'Ausazko platerak, mugarik gabe. Begia trebatzeko.',play:'Jokatu',rankTitle:'Gaurko sailkapena',yourName:'Zure izena',join:'Izena eman',joined:'Sailkapenean zaude!',already:'Gaur izena eman duzu jada.',rankEmpty:'Oraindik ez dago inor. Izan zaitez lehena!',rankOff:'Sailkapena ez dago erabilgarri orain.',rankLoad:'Kargatzen…',playToJoin:'Jokatu erronka eta eman izena amaitzean.',menuShort:'Menua',thShare:'Zatia',thDev:'Desbideratzea',menuTitle:'Eguneko menua',name:'Euskara',title:'Zatiketa Ezinezkoa',subtitle:'Banatu janaria zati berdinetan',daily:'Eguneko erronka',free:'Modu librea',todayN:'{n} lagun mahaian',forN:'{n} pertsonarentzat',start:'Hasi',resume:'Jarraitu',played:'Gaurko erronka jokatu duzu jada.',seeResult:'Ikusi emaitza',dishOf:'Platera {i}/{n}',
 radial:'Arrastatu eta askatu erditik mozteko.',diam:'Arrastatu alde batetik bestera erditik mozteko.',linear:'Arrastatu eta askatu moztu nahi duzun lekuan.',grid:'Arrastatu ebakian zehar: bertikalean edo horizontalean.',pour:'Eutsi sakatuta ontzi bakoitza zerbitzatzeko. Kontuz, formak engainatzen du!',spoon:'Eutsi sakatuta platera bakoitza burruntziarekin zerbitzatzeko. Ondo kalkulatu, ez dago atzera bueltarik!',share:'Ukitu pieza bat eta gero platera bat, edo arrastatu. Kontuz tamainekin!',
 left:'Falta diren ebakiak: <b>{k}</b>',pieces:'Zatiak: <b>{p}</b>/{n}',nope:'Ebaki horrekin ez dira kontuak ateratzen!',leftDish:'Erretiluan geratzen dira: <b>{k}</b>',fonte:'Erretilua',serve:'Zerbitzatu',
 fairness:'zuzentasuna',smallest:'Zatirik txikiena handienaren %{s} da',ideal:'Zati zuzena: %{p}',next:'Hurrengo platera',end:'Ikusi emaitza',another:'Beste platera',avg:'Batez bestekoa: %{s}',
 r95:'Milimetrikoa! Inork ez du kexarik.',r85:'Oso ondo, ia ez da nabaritzen.',r70:'Norbait ondokoaren plateari begira dago…',r50:'Hemen eztabaida egongo da.',r0:'Iskanbila mahaian!',
-total:'Eguneko puntuazioa',share2:'Partekatu',copied:'Kopiatuta!',copyThis:'Kopiatu testua:',nextDay:'Hurrengo erronka:',home:'Hasiera',howTitle:'Nola jokatu',scoreTitle:'Nola puntuatzen da',bestSplit:'Zure banaketa: %{a} · onena: %{b}',scoreHow:'Platera bakoitzaren nota zuzentasuna da: zatirik txikiena handienaz zatituta. Denak berdinak = %100; txikiena handienaren erdia bada = %50.<br><br><b>Ebakiak:</b> zati bakoitzaren azalera neurtzen da, ikusten den bezala.<br><b>Edariak eta burruntzia:</b> zerbitzatutako kantitatea neurtzen da. Kontuz, kopa konikoan mailak engainatzen du.<br><b>Tapak:</b> piezak tamaina desberdinekoak direnez, banaketarik onenarekin konparatzen da: asmatzen baduzu, %100.<br><br>Eguneko nota platera guztien batez bestekoa da.',
+total:'Eguneko puntuazioa',share2:'Partekatu',copied:'Kopiatuta!',copyThis:'Kopiatu testua:',nextDay:'Hurrengo erronka:',home:'Hasiera',howTitle:'Nola jokatu',scoreTitle:'Nola puntuatzen da',bestSplit:'Zure banaketa: %{a} · onena: %{b}',scoreHow:'Platera bakoitzaren nota zuzentasuna da: zatirik txikiena handienaz zatituta. Denak berdinak = %100; txikiena handienaren erdia bada = %50.<br><br><b>Ebakiak:</b> zati bakoitzaren azalera neurtzen da, ikusten den bezala. Zati baten laurdena baino txikiagoak apurrak dira: ez dira zati gisa kontatzen eta galtzen dena notari kentzen zaio.<br><b>Edariak eta burruntzia:</b> zerbitzatutako kantitatea neurtzen da. Kontuz, kopa konikoan mailak engainatzen du.<br><b>Tapak:</b> piezak tamaina desberdinekoak direnez, banaketarik onenarekin konparatzen da: asmatzen baduzu, %100.<br><br>Eguneko nota platera guztien batez bestekoa da.',
 how:'Egunero bazkari berri bat dago menu osoarekin: sarrera, lehenengoa, bigarrena, postrea eta edaria. Moztu, zerbitzatu burruntziarekin, bete edalontziak edo banatu tapak pertsona adina zatitan. Ez dago atzera bueltarik! Zenbat eta zati berdinagoak, orduan eta puntu gehiago.',
 course:{e:'Sarrera',a:'Osagarria',p:'Lehen platera',s:'Bigarren platera',d:'Postrea',b:'Edaria'},
 occ:{romantica:'Afari erromantikoa',venres:'Ostiraleko afaritxoa',avoa:'Amonaren etxeko bazkaria',amigos:'Lagunekin afaria',familia:'Familia-bazkaria',cumpre:'Urtebetetze-festa',empresa:'Enpresako afaria',festa:'Herriko jaiak'}}};
@@ -586,7 +588,7 @@ function setupDish(d){const ty=D[d.key].type,st=D[d.key].st;
   cur={key:d.key,n:d.n,seed:d.seed,diners:mode==='daily'?plan.diners.slice(0,d.n):dinersFor(Math.random,d.n),type:ty,rot:ty==='linear'&&mulberry(d.seed^40503)()<.5?1:0,cuts:[],done:false,fr:null,amt:Array(d.n).fill(0),jug:1};
   if(ty==='share'){const r=mulberry(d.seed^777),cnt=Math.min(36,Math.round(d.n*(st.m||2))+Math.floor(r()*d.n));cur.items=Array.from({length:cnt},(_,i)=>({id:i,size:+(0.6+r()*0.9).toFixed(2),at:-1}))}
   cur.pts=null;
-  if(hasImg(d.key)){if(ty==='linear'){const b=foodBox(d.key);LIN[d.key]={s:'img',x0:b.x,x1:b.x+b.w,y0:b.y,y1:b.y+b.h,rx:0}}cur.pts=maskPts(d.key)}
+  if(hasImg(d.key)){if(ty==='linear'){const b=foodBox(d.key);LIN[d.key]={s:'img',x0:b.x,x1:b.x+b.w,y0:b.y,y1:b.y+b.h,rx:0}}cur.pts=maskPts(d.key);if(['radial','diam','linear'].includes(ty))fhInit()}
   sel=null;busy=false;}
 function randomDish(){const ks=vegMode?KEYS.filter(k=>VEG.has(k)):KEYS.filter(k=>!VEGONLY.has(k)),k=ks[Math.floor(Math.random()*ks.length)];return{key:k,n:evenN(k,2+Math.floor(Math.random()*9)),seed:Math.floor(Math.random()*1e9)}}
 
@@ -720,10 +722,16 @@ const fmt=x=>Math.round(x*10)/10;
 /* ===================== PANTALLAS ===================== */
 function flags(){return`<div class="langsel"><button class="flag on" data-act="langmenu" aria-label="${T[lang].name}" aria-haspopup="true">${FLAG[lang]}</button><div class="langmenu">${Object.keys(T).filter(l=>l!==lang).map(l=>`<button class="flag" data-act="lang" data-l="${l}">${FLAG[l]}<span>${T[l].name}</span></button>`).join('')}</div></div>`}
 const FACEIDX={'😐':0,'😋':1,'🙂':2,'😒':3,'😠':4,'😏':5};
-function faceImg(c,e,cls='face'){return FACES[c]?`<img class="${cls}" src="${FACES[c][e]}" alt="">`:DINERS[c%DINERS.length]}
+function faceImg(c,e,cls='face',flip){return FACES[c]?`<img class="${cls}${flip?' flip':''}" src="${FACES[c][e]}" alt="">`:DINERS[c%DINERS.length]}
+// As caras «de reollo» (3) e «pícara» (5) miran cara á dereita: se o obxectivo está á esquerda, espéllanse.
+// Quen recibe menos mira a quen máis ten; quen recibe máis mira a quen menos ten.
+function gazeFlips(fr,xs){if(!fr)return fr;const n=fr.length;let mx=0,mn=0;fr.forEach((v,i)=>{if(v>fr[mx])mx=i;if(v<fr[mn])mn=i});
+  return fr.map((v,i)=>{const e=FACEIDX[face(v*n)];const tg=e===3?mx:e===5?mn:-1;return tg>=0&&tg!==i&&xs[tg]<xs[i]})}
+const exprOf=(fr,i)=>fr?FACEIDX[face(fr[i]*fr.length)]:0;
 function dinersFor(r,n){const a=FACES.map((_,i)=>i);for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,n)}
 function people(n,fr,ds){ds=ds||dinersFor(Math.random,n);
-  const f=i=>`<span class="p${fr?' pop':''}">${faceImg(ds[i],fr?FACEIDX[face(fr[i]*n)]:0)}</span>`;
+  const bk=n<=6?n:Math.ceil(n/2),xs=Array.from({length:n},(_,i)=>i<bk?i:i-bk+.5),fl=gazeFlips(fr,xs)||[];
+  const f=i=>`<span class="p${fr?' pop':''}">${faceImg(ds[i],fr?FACEIDX[face(fr[i]*n)]:0,'face',fl[i])}</span>`;
   if(n<=6)return`<div class="people" style="--k:6">${Array.from({length:n},(_,i)=>f(i)).join('')}</div>`;
   const back=Math.ceil(n/2),front=n-back,even=front===back;
   return`<div class="people two${even?' even':''}" style="--k:${even?back+.5:back}"><div class="prow back">${Array.from({length:back},(_,i)=>f(i)).join('')}</div><div class="prow front">${Array.from({length:front},(_,i)=>f(back+i)).join('')}</div></div>`}
@@ -769,6 +777,7 @@ function renderGame(){
 function drawStage(){({radial:drawRadial,diam:drawRadial,linear:drawLinear,pour:drawPour,spoon:drawPour,share:drawShare})[cur.type]()}
 function updHint(){const h=document.getElementById('hint');if(!h)return;if(cur.done){h.innerHTML='';return}
   const k=cur.cuts.length;
+  if(fh()){h.innerHTML=t('cutHint')+'<br>'+t('pieces',{p:cur.npieces,n:cur.n});return}
   if(cur.type==='pour'||cur.type==='spoon')h.innerHTML=t(cur.type);
   else if(cur.type==='share')h.innerHTML=t('share')+'<br>'+t('leftDish',{k:cur.items.filter(o=>o.at<0).length});
   else if(cur.type==='radial')h.innerHTML=t('radial')+'<br>'+t('left',{k:cur.n-k});
@@ -780,6 +789,7 @@ function updHint(){const h=document.getElementById('hint');if(!h)return;if(cur.d
 function lbl(x,y,txt){return`<g class="pop"><rect x="${f1(x-20)}" y="${f1(y-10)}" width="40" height="20" fill="#fbf8f1" stroke="#1f1a15" stroke-width="1"/><text x="${f1(x)}" y="${f1(y+4.5)}" text-anchor="middle" font-size="12" font-weight="600" fill="#1f1a15" font-family="'IBM Plex Mono',monospace">${txt}</text></g>`}
 function radAngles(){const b=cur.type==='diam'?cur.cuts.flatMap(a=>[a,a+Math.PI]):cur.cuts;return b.map(a=>((a%(2*Math.PI))+2*Math.PI)%(2*Math.PI)).sort((x,y)=>x-y)}
 function drawRadial(){
+  if(fh()){drawFH();return}
   const f=foodSVG(cur.key,cur.seed);
   let s=radPlate()+foodDefs(cur.key);
   if(!cur.done){s+=`<g>${f}</g><g id="cuts"></g><line id="prev" x1="160" y1="160" x2="160" y2="160" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 4" visibility="hidden"/>${cur.type==='radial'?'<circle cx="160" cy="160" r="3" fill="#2a1f17" opacity=".35"/>':''}`}
@@ -810,6 +820,7 @@ function linCells(){const L=LIN[cur.key],xb=[L.x0,...cutsOf('v'),L.x1],yb=[L.y0,
   for(let r=0;r<nr;r++)for(let c=0;c<nc;c++)out.push({x0:xb[c],x1:xb[c+1],y0:yb[r],y1:yb[r+1],c,r,nc,nr,ox:(c-(nc-1)/2)*7,oy:(r-(nr-1)/2)*7,a:cur.pts?ptsIn(xb[c],xb[c+1],yb[r],yb[r+1]):cellArea(L,xb[c],xb[c+1],yb[r],yb[r+1])});
   const tot=out.reduce((s,x)=>s+x.a,0);out.forEach(x=>x.fr=x.a/tot);return out}
 function drawLinear(){
+  if(fh()){drawFH();return}
   const L=LIN[cur.key],f=foodSVG(cur.key,cur.seed),h=L.y1-L.y0;
   let s=boardSVG(L,h)+foodDefs(cur.key),lab='';
   if(!cur.done)s+=`<g>${f}</g><g id="cuts"></g><line id="prev" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 4" visibility="hidden"/>`;
@@ -828,6 +839,78 @@ function drawLinear(){
 }
 function linSeg(c){const L=LIN[cur.key];return c.d==='v'?[c.p,L.y0-10,c.p,L.y1+10]:[L.x0-10,c.p,L.x1+10,c.p]}
 function drawLinearCuts(){document.getElementById('cuts').innerHTML=cur.cuts.map(c=>cutLine(...linSeg(c))).join('')}
+
+/* ===================== CORTE A MAN ALZADA ===================== */
+const fh=()=>!!cur&&['radial','diam','linear'].includes(cur.type)&&hasImg(cur.key);
+function fhInit(){const M=MASK[cur.key];cur.cutm=new Uint8Array(M.W*M.H);cur.paths=[];cur.npieces=1;cur.pieceInfo=null;cur.labArr=null}
+function l2m(x,y){const b=foodBox(cur.key),M=MASK[cur.key];return[(x-b.x)/b.w*M.W,(y-b.y)/b.h*M.H]}
+function rasterize(cm,P){const M=MASK[cur.key];
+  for(let i=1;i<P.length;i++){const a=l2m(P[i-1][0],P[i-1][1]),b=l2m(P[i][0],P[i][1]),st=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])*2));
+    for(let k=0;k<=st;k++){const x=Math.round(a[0]+(b[0]-a[0])*k/st),y=Math.round(a[1]+(b[1]-a[1])*k/st);
+      for(const d of[[0,0],[1,0],[-1,0],[0,1],[0,-1]]){const X=x+d[0],Y=y+d[1];if(X>=0&&Y>=0&&X<M.W&&Y<M.H)cm[Y*M.W+X]=1}}}}
+function comps(cm){const M=MASK[cur.key],W=M.W,H=M.H,N=W*H,lab=new Int32Array(N).fill(-1),q=new Int32Array(N);let total=0;for(let i=0;i<N;i++)if(M.m[i])total++;
+  const out=[];let id=0;const ok=r=>M.m[r]&&!cm[r]&&lab[r]<0;
+  for(let i=0;i<N;i++){if(!M.m[i]||cm[i]||lab[i]>=0)continue;let h=0,tl=0,n=0,sx=0,sy=0;q[tl++]=i;lab[i]=id;
+    while(h<tl){const p=q[h++],x=p%W,y=(p/W)|0;n++;sx+=x;sy+=y;
+      if(x>0&&ok(p-1)){lab[p-1]=id;q[tl++]=p-1}if(x<W-1&&ok(p+1)){lab[p+1]=id;q[tl++]=p+1}
+      if(y>0&&ok(p-W)){lab[p-W]=id;q[tl++]=p-W}if(y<H-1&&ok(p+W)){lab[p+W]=id;q[tl++]=p+W}}
+    out.push({id,n,cx:sx/n,cy:sy/n});id++}
+  const thr=total/cur.n*.25;return{lab,all:out,valid:out.filter(c=>c.n>=thr),total}}
+function drawFHCuts(){const el=document.getElementById('cuts');if(!el)return;el.innerHTML=cur.paths.map(P=>{const p=P.map(q=>f1(q[0])+','+f1(q[1])).join(' ');
+  return`<polyline points="${p}" fill="none" stroke="#1f1a15" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><polyline points="${p}" fill="none" stroke="#fbf8f1" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>`}).join('')}
+function fhOverlay(){const M=MASK[cur.key],cv=document.createElement('canvas');cv.width=M.W;cv.height=M.H;const g=cv.getContext('2d'),im=g.createImageData(M.W,M.H),idx={};cur.pieceInfo.forEach((o,i)=>idx[o.id]=i);
+  for(let p=0;p<M.W*M.H;p++){const l=cur.labArr[p];if(l<0)continue;if(idx[l]==null){im.data[p*4]=110;im.data[p*4+1]=110;im.data[p*4+2]=110;im.data[p*4+3]=200;continue}const dark=idx[l]%2;im.data[p*4]=dark?25:255;im.data[p*4+1]=dark?15:250;im.data[p*4+2]=dark?8:238;im.data[p*4+3]=dark?60:45}
+  g.putImageData(im,0,0);return cv.toDataURL()}
+function drawFH(){
+  const lin=cur.type==='linear',L=lin?LIN[cur.key]:null;let s=lin?boardSVG(L,L.y1-L.y0):radPlate(),lab='';
+  s+=foodDefs(cur.key)+'<use href="#fimg"/>';
+  if(cur.done&&cur.pieceInfo){const b=foodBox(cur.key);s+=`<image href="${fhOverlay()}" x="${f1(b.x)}" y="${f1(b.y)}" width="${f1(b.w)}" height="${f1(b.h)}" preserveAspectRatio="none"/>`;
+    cur.pieceInfo.forEach((o,i)=>{const p=lin?toScreen(o.x,o.y):{x:o.x,y:o.y};lab+=lbl(p.x,p.y,Math.round(cur.fr[i]*100)+'%')})}
+  s+='<g id="cuts"></g><g id="fhg"></g>';
+  document.getElementById('stage').innerHTML=`<svg id="sv" viewBox="0 0 320 320"><g${lin&&cur.rot?' transform="rotate(90 160 160)"':''}>${s}</g>${lab}</svg>`;
+  drawFHCuts();if(!cur.done)wireFH();
+}
+function wireFH(){
+  const sv=document.getElementById('sv'),grp=document.getElementById('fhg');
+  const pos=e=>{const p=sv.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(sv.getScreenCTM().inverse());return cur.type==='linear'?toLocal(q):{x:q.x,y:q.y}};
+  let P=null,live=null,tool=null,ang=0,dist=0;
+  const moveTool=(x,y)=>{tool.setAttribute('transform',`translate(${f1(x)} ${f1(y)}) rotate(${f1(ang)})`);const sp=tool.querySelector('.spin');if(sp)sp.setAttribute('transform',`rotate(${f1(dist*3.4)})`)};
+  sv.oncontextmenu=e=>e.preventDefault();
+  sv.onpointerdown=e=>{e.preventDefault();if(cur.done)return;try{sv.setPointerCapture(e.pointerId)}catch(_){}
+    const p=pos(e);P=[[p.x,p.y]];dist=0;
+    grp.innerHTML=`<polyline id="lvl" fill="none" stroke="#1f1a15" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="${f1(p.x)},${f1(p.y)}"/><g id="lvt">${toolSVG(toolOf())}</g>`;
+    live=document.getElementById('lvl');tool=document.getElementById('lvt');moveTool(p.x,p.y)};
+  sv.onpointermove=e=>{if(!P)return;const p=pos(e),l=P[P.length-1],d=Math.hypot(p.x-l[0],p.y-l[1]);if(d<1.5)return;
+    const a=Math.atan2(p.y-l[1],p.x-l[0])*180/Math.PI;ang+=(((a-ang)%360+540)%360-180)*.35;dist+=d;P.push([p.x,p.y]);
+    live.setAttribute('points',P.map(q=>f1(q[0])+','+f1(q[1])).join(' '));moveTool(p.x,p.y)};
+  sv.onpointerup=()=>{if(!P)return;const Q=P;P=null;grp.innerHTML='';if(Q.length>1)commitCut(Q)};
+  sv.onpointercancel=()=>{P=null;grp.innerHTML=''};
+}
+function commitCut(Q){
+  const tmp=cur.cutm.slice();rasterize(tmp,Q);const c=comps(tmp);
+  if(c.valid.length>cur.n){updHint();const h=document.getElementById('hint');h.innerHTML=`<b style="color:var(--accent)">${t('tooMany')}</b><br>`+h.innerHTML;
+    const sv=document.getElementById('sv');sv.classList.remove('shake');void sv.offsetWidth;sv.classList.add('shake');return}
+  cur.cutm=tmp;cur.paths.push(Q);cur.npieces=Math.max(1,c.valid.length);drawFHCuts();updHint();
+  if(c.valid.length===cur.n)fhFinish(c);
+}
+function fhFinish(c){
+  const b=foodBox(cur.key),M=MASK[cur.key];
+  // punto máis interior de cada anaco (transformada de distancia en dúas pasadas) para poñer a etiqueta
+  const W=M.W,H=M.H,L=c.lab,dt=new Float32Array(W*H),INF=1e9;
+  for(let i=0;i<W*H;i++)dt[i]=L[i]<0?0:INF;
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x;if(!dt[i])continue;let m=dt[i];
+    if(x>0)m=Math.min(m,L[i-1]===L[i]?dt[i-1]+1:1);else m=Math.min(m,1);
+    if(y>0)m=Math.min(m,L[i-W]===L[i]?dt[i-W]+1:1);else m=Math.min(m,1);dt[i]=m}
+  for(let y=H-1;y>=0;y--)for(let x=W-1;x>=0;x--){const i=y*W+x;if(!dt[i])continue;let m=dt[i];
+    if(x<W-1)m=Math.min(m,L[i+1]===L[i]?dt[i+1]+1:1);else m=Math.min(m,1);
+    if(y<H-1)m=Math.min(m,L[i+W]===L[i]?dt[i+W]+1:1);else m=Math.min(m,1);dt[i]=m}
+  const best={};for(let i=0;i<W*H;i++){const l=L[i];if(l<0)continue;if(!best[l]||dt[i]>best[l].d)best[l]={d:dt[i],x:i%W,y:(i/W)|0}}
+  const v=c.valid.map(o=>{const p=best[o.id]||{x:o.cx,y:o.cy};return{id:o.id,n:o.n,x:b.x+(p.x+.5)/M.W*b.w,y:b.y+(p.y+.5)/M.H*b.h}});
+  if(cur.type==='linear'){const bh=b.h/3;v.sort((p,q)=>Math.floor((p.y-b.y)/bh)-Math.floor((q.y-b.y)/bh)||p.x-q.x)}
+  else v.sort((p,q)=>Math.atan2(p.y-160,p.x-160)-Math.atan2(q.y-160,q.x-160));
+  const tot=v.reduce((s,o)=>s+o.n,0),crumbs=c.all.filter(o=>!v.some(x=>x.id===o.id)).reduce((s,o)=>s+o.n,0);
+  cur.waste=crumbs/(tot+crumbs);cur.fr=v.map(o=>o.n/tot);cur.pieceInfo=v;cur.labArr=c.lab;finish();
+}
 
 /* ===================== CORTAR ===================== */
 let dragStart=null,prevDir='v',prevOk=true;
@@ -909,7 +992,7 @@ const LADLE=()=>IMG.t_ladle?`<img class="ladle" src="${IMG.t_ladle}" alt="">`:''
 function drawPour(){
   const st=document.getElementById('stage'),P=D[cur.key].st,spoon=cur.type==='spoon',jk=jugKey();
   const src=spoon?`<div class="jug dish" id="jug">${dishSVG('src',Math.sqrt(cur.jug))}</div>`:`<div class="jug ${jk==='j_pota'?'wide':''}" id="jug">${vesselSVG(GI[jk],cur.jug*.85,'j',P.c,false)}${cur.key==='queimada'?`<div class="flames">${FL.map(u=>`<img src="${u}" alt="">`).join('')}</div>`:''}</div>`;
-  st.innerHTML=`<div class="pour">${src}<div class="glasses">${cur.amt.map((_,i)=>`<div class="gl" data-i="${i}">${spoon?LADLE():`<span class="stream" style="background:${P.c}"></span>`}${spoon?dishSVG(i,Math.sqrt(fillOf(i))):vesselSVG(GI[P.g],fillOf(i),i,P.c,P.foam)}<div class="gface">${faceImg(cur.diners[i],cur.done?FACEIDX[face(cur.fr[i]*cur.n)]:0)}</div><div class="gpct">${cur.done?Math.round(cur.fr[i]*100)+'%':''}</div></div>`).join('')}</div></div>`;
+  st.innerHTML=`<div class="pour">${src}<div class="glasses">${cur.amt.map((_,i)=>`<div class="gl" data-i="${i}">${spoon?LADLE():`<span class="stream" style="background:${P.c}"></span>`}${spoon?dishSVG(i,Math.sqrt(fillOf(i))):vesselSVG(GI[P.g],fillOf(i),i,P.c,P.foam)}<div class="gface">${faceImg(cur.diners[i],cur.done?FACEIDX[face(cur.fr[i]*cur.n)]:0,'face',cur.done&&gazeFlips(cur.fr,cur.fr.map((_,k)=>k%5))[i])}</div><div class="gpct">${cur.done?Math.round(cur.fr[i]*100)+'%':''}</div></div>`).join('')}</div></div>`;
   if(cur.done)return;
   st.oncontextmenu=e=>e.preventDefault();
   st.querySelectorAll('.gl').forEach(g=>{
@@ -965,7 +1048,7 @@ function drawShare(){
   const pd=Math.max(80,((st.clientWidth||360)-40)/3),inner=(pd*.7)**2,sc=Math.min(1,Math.sqrt(inner/Math.max(1,...sums)));
   const it=o=>`<span class="it${sel===o.id?' sel':''}" data-id="${o.id}" style="width:${Math.round(base(o)*sc)}px">${itemSVG(cur.key,o.id,cur.seed)}</span>`;
   st.innerHTML=`<div class="share"><div class="fonte" data-dst="-1"><div class="flabel">${t('fonte')}</div><div class="fitems">${items.filter(o=>o.at<0).map(it).join('')}</div></div>
-  <div class="plates">${Array.from({length:cur.n},(_,i)=>`<div class="plate" data-dst="${i}"><div class="pface">${faceImg(cur.diners[i],cur.done?FACEIDX[face(cur.fr[i]*cur.n)]:0)}</div><div class="pitems">${items.filter(o=>o.at===i).map(it).join('')}</div>${cur.done?`<div class="ptag pop">${Math.round(cur.fr[i]*100)}%</div>`:''}</div>`).join('')}</div>
+  <div class="plates">${Array.from({length:cur.n},(_,i)=>`<div class="plate" data-dst="${i}"><div class="pface">${faceImg(cur.diners[i],cur.done?FACEIDX[face(cur.fr[i]*cur.n)]:0,'face',cur.done&&gazeFlips(cur.fr,cur.fr.map((_,k)=>k%3))[i])}</div><div class="pitems">${items.filter(o=>o.at===i).map(it).join('')}</div>${cur.done?`<div class="ptag pop">${Math.round(cur.fr[i]*100)}%</div>`:''}</div>`).join('')}</div>
   ${cur.done?'':`<button class="btn" data-act="serve" ${items.some(o=>o.at<0)?'disabled':''}>${t('serve')}</button>`}</div>`;
   st.onpointerdown=e=>{const el=e.target.closest('.it');if(!el||cur.done)return;e.preventDefault();drag={id:+el.dataset.id,x:e.clientX,y:e.clientY,moved:false,ghost:null,el}};
 }
@@ -997,7 +1080,7 @@ function bestRatio(w,n){
       if(!ok)break}
     const r=Math.min(...sum)/Math.max(...sum);if(r>best)best=r}
   return best}
-function curScore(){const raw=scoreOf(cur.fr);return cur.type==='share'&&cur.best?Math.min(100,Math.round(raw/cur.best*100)):raw}
+function curScore(){const raw=scoreOf(cur.fr);if(cur.waste)return Math.round(raw*(1-cur.waste));return cur.type==='share'&&cur.best?Math.min(100,Math.round(raw/cur.best*100)):raw}
 function saveDay(){const st=store.get(DKEY)||[];if(st.length<plan.dishes.length)return;const tot=Math.round(st.reduce((a,b)=>a+b.score,0)/st.length);const days=store.get('dimp-days')||{};days[todayKey()]=Math.max(days[todayKey()]||0,tot);store.set('dimp-days',days)}
 function dayStr(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function streakInfo(){const days=store.get('dimp-days')||{};const d=new Date();if(!days[dayStr(d)])d.setDate(d.getDate()-1);let n=0;while(days[dayStr(d)]!=null){n++;d.setDate(d.getDate()-1)}
@@ -1019,7 +1102,7 @@ function showResult(){
     return`<tr><td>${faceImg(cur.diners[i],FACEIDX[face(f*n)])}</td><td class="num">${dec(p)}</td><td class="num ${dv<-0.05?'neg':''}">${dv>=0?'+':'−'}${dec(Math.abs(dv))}</td><td><div class="bar"><i style="width:${w}%"></i><b></b></div></td></tr>`}).join('');
   document.getElementById('res').innerHTML=`<div class="result"><div class="score pop">${sc}<small>%</small></div><div class="slabel">${t('fairness')}</div><p class="react">${react(sc)}</p>
   <table class="report"><tr><th></th><th class="num">${t('thShare')} %</th><th class="num">${t('thDev')}</th><th></th></tr>${rows}</table>
-  <p class="meta">${cur.type==='share'?t('bestSplit',{a:raw,b:cur.best}):t('smallest',{s:sc})}<br>${t('ideal',{p:fmt(ideal)})}${mode==='free'?' · '+t('avg',{s:avg}):''}</p>
+  <p class="meta">${cur.type==='share'?t('bestSplit',{a:raw,b:cur.best}):t('smallest',{s:raw})}<br>${cur.waste>.0005?t('crumbs',{s:dec(cur.waste*100)})+'<br>':''}${t('ideal',{p:fmt(ideal)})}${mode==='free'?' · '+t('avg',{s:avg}):''}</p>
   <button class="btn" data-act="next">${mode==='free'?t('another'):last?t('end'):t('next')}</button></div>`;
 }
 function renderEnd(){
